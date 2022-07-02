@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/css/uikit.min.css" />
+
+    <title>Programmation Forum</title>
+</head>
+<body>
+
+    <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+        <div class="uk-navbar-left">
+    
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'topics' %}">Topics</a> </li>
+                <li><a href="{% url 'langue' %}">Languages</a></li>
+            </ul>
+    
+        </div>
+    </nav>
+    
+    {% block content %}
+  
+    <div class="uk-child-width-1-2@s" uk-grid>
+        
+        <div>
+            <h2 class="uk-text-center">List of Topics</h2>
+            <div class="uk-margin uk-margin-auto-right uk-margin-auto@m uk-width-1-2@s uk-card uk-card-default uk-card-body uk-text-center">
+                {% for topics in all_topics %}
+                    
+                    <h3 class="uk-card-title">{{topics.name}}</h3>
+                    <p>{{topics.comments}}</p>
+                 
+                {% endfor %}
+            </div>
+        </div>
+        <div >
+            <h2 class="uk-text-center">List of Languages</h2>
+            <div class="uk-margin uk-margin-auto-right uk-margin-auto@m uk-width-1-2@s uk-card uk-card-default uk-card-body uk-text-center">
+                {% for lg in all_lang %}
+                <h3 class="uk-card-title">{{lg}}</h3>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div> 
+
+    {% endblock content %}
+
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.14.3/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>
