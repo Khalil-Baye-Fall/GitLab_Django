@@ -4,7 +4,29 @@
 
 {% block content %}
 
-<html>Welcome o topic page!</html>
+<div class="uk-card uk-card-default  uk-position-center">
+    <div class="uk-card-header">
+        <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+                <img class="uk-border-circle" width="40" height="40" src="images">
+            </div>
+            <div class="uk-width-expand">
+                <h3 class="uk-card-title uk-margin-remove-bottom">{{topic.name}}</h3>
+                <p class="uk-text-meta uk-margin-remove-top">{{topic.date_add}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="uk-card-body">
+        <p>{{topic.comments}}</p>
+    </div>
+    <div class="uk-card-footer">
+        <a href="{% url 'update_topic' topic.id %}" class="uk-button uk-button-text"><button class="uk-button uk-button-secondary">Update</button></a>
+        <a href="#" class="uk-button uk-button-text"><button class="uk-button uk-button-danger">Delete</button></a>
+
+    </div>
+</div>
+
+
 
 
 {% endblock content %}

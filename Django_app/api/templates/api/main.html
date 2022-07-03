@@ -18,7 +18,7 @@
             <ul class="uk-navbar-nav">
                 <li class="uk-active"><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'topics' %}">Topics</a> </li>
-                <li><a href="{% url 'langue' %}">Languages</a></li>
+                <li><a href="{% url 'langues' %}">Languages</a></li>
             </ul>
     
         </div>
@@ -26,24 +26,26 @@
     
     {% block content %}
   
-    <div class="uk-child-width-1-2@s" uk-grid>
-        
-        <div>
+    <div class="uk-child-width-2-2@s" uk-grid>
+        <div class="uk-margin">
+            <a href="{% url 'topic_view' %}"><button class="uk-button uk-button-primary uk-align-center">Create New topic</button></a>
             <h2 class="uk-text-center">List of Topics</h2>
             <div class="uk-margin uk-margin-auto-right uk-margin-auto@m uk-width-1-2@s uk-card uk-card-default uk-card-body uk-text-center">
                 {% for topics in all_topics %}
                     
-                    <h3 class="uk-card-title">{{topics.name}}</h3>
-                    <p>{{topics.comments}}</p>
+                    <u><h3 class="uk-card-title">{{topics.name}}</h3></u>
+                    <p>{{topics.comments|truncatewords:10}} <a href="{% url 'topic' topics.id  %}">View</a></p>
                  
                 {% endfor %}
             </div>
         </div>
-        <div >
+        <div class="uk-margin" >
+            <a href="{% url 'lang_view' %}"><button class="uk-button uk-button-primary uk-align-center">Add New Language</button></a>
+
             <h2 class="uk-text-center">List of Languages</h2>
             <div class="uk-margin uk-margin-auto-right uk-margin-auto@m uk-width-1-2@s uk-card uk-card-default uk-card-body uk-text-center">
                 {% for lg in all_lang %}
-                <h3 class="uk-card-title">{{lg}}</h3>
+               <a href="{% url 'langue' lg.id %}"><h3 class="uk-card-title">{{lg}}</h3></a> 
 
                 {% endfor %}
             </div>
