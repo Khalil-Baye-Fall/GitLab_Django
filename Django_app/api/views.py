@@ -11,7 +11,6 @@ def home_page(request):
     all_topics = Topic.objects.all()
     
     context = {'all_lang': all_lang, 'all_topics': all_topics}
-    print(all_topics)
     return render(request, 'api/main.html', context)
 
 def get_topic(request, pk=None):
